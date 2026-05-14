@@ -1,98 +1,38 @@
--- =========================================================
--- DDL - BANCO DE DADOS EDUPLAN
--- =========================================================
+CREATE DATABASE catalogo_filmes;
+USE catalogo_filmes;
 
--- =========================================================
--- CRIAÇÃO DO BANCO
--- =========================================================
-
-CREATE DATABASE eduplan;
-
-USE eduplan;
-
-
--- =========================================================
--- TABELA: PROFESSORES
--- =========================================================
-
-CREATE TABLE professores (
-
-    id_professor INT PRIMARY KEY AUTO_INCREMENT,
-
-    nome VARCHAR(100) NOT NULL,
-
-    email VARCHAR(100) UNIQUE NOT NULL,
-
-    senha_hash VARCHAR(255) NOT NULL
-
+CREATE TABLE usuarios (
+    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    nome       VARCHAR(100) NOT NULL,
+    email      VARCHAR(100) NOT NULL UNIQUE,
+    senha      VARCHAR(255) NOT NULL
 );
 
+CREATE TABLE filmes (
+    id_filme        INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario      INT NOT NULL,
+    titulo          VARCHAR(200) NOT NULL,
+    ano_lancamento  YEAR NOT NULL,       
+    avaliacao       DECIMAL(2,1),                  
+    ator_principal  VARCHAR(100),                  
 
--- =========================================================
--- TABELA: DISCIPLINAS
--- =========================================================
-
-CREATE TABLE disciplinas (
-
-    id_disciplina INT PRIMARY KEY AUTO_INCREMENT,
-
-    nome_disciplina VARCHAR(100) NOT NULL,
-
-    area_conhecimento VARCHAR(100)
-
+    FOREIGN KEY (id_usuario)
+        REFERENCES usuarios(id_usuario)
+        ON DELETE RESTRICT
 );
 
+CREATE TABLE generos (
+    id_genero    INT AUTO_INCREMENT PRIMARY KEY,
+    nome_genero  VARCHAR(100) NOT NULL,
+    descricao    VARCHAR(400) NOT NULL,
+    id_usuario   INT NOT NULL,
+    id_filme     INT NOT NULL,
 
--- =========================================================
--- TABELA: SERIES
--- =========================================================
+    FOREIGN KEY (id_usuario)
+        REFERENCES usuarios(id_usuario)    
+        ON DELETE RESTRICT,
 
-CREATE TABLE series (
-
-    id_serie INT PRIMARY KEY AUTO_INCREMENT,
-
-    nome_serie VARCHAR(100) NOT NULL,
-
-    nivel VARCHAR(50)
-
-);
-
-
--- =========================================================
--- TABELA: ATIVIDADES
--- =========================================================
-
-CREATE TABLE atividades (
-
-    id_atividade INT PRIMARY KEY AUTO_INCREMENT,
-
-    titulo VARCHAR(200) NOT NULL,
-
-    conteudo TEXT,
-
-    metodologia TEXT,
-
-    objetivos TEXT,
-
-    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-
-    id_professor INT,
-
-    id_disciplina INT,
-
-    id_serie INT,
-
-
-    -- RELACIONAMENTO COM PROFESSORES
-    FOREIGN KEY (id_professor)
-        REFERENCES professores(id_professor),
-
-    -- RELACIONAMENTO COM DISCIPLINAS
-    FOREIGN KEY (id_disciplina)
-        REFERENCES disciplinas(id_disciplina),
-
-    -- RELACIONAMENTO COM SERIES
-    FOREIGN KEY (id_serie)
-        REFERENCES series(id_serie)
-
+    FOREIGN KEY (id_filme)
+        REFERENCES filmes(id_filme)
+        ON DELETE RESTRICT
 );
