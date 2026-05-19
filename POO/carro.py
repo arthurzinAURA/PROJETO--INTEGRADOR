@@ -12,11 +12,20 @@ class Carro:
     # "marca", "modelo", "ano" e "velocidade"
     # São Parâmetros recebidos pela classe.
 
+    # Método Construtor
     def __init__(self, marca, modelo, ano, velocidade=0):
         self.marca = marca
         self.modelo = modelo
         self.ano = ano
         self.velocidade = velocidade
+
+    # Métodos
+    # Método acelerar
+    def acelerar(self, aumento):
+        # self.velocidade = self.velocidade + aumento:
+        self.velocidade += aumento
+
+        print(f" O carro acelerou para{self.velocidade}km/h")
 
 # Criando um objeto da Classe Carro
 
@@ -24,4 +33,16 @@ class Carro:
 carro1 = Carro("Chevrolet", "S10", 2013)
 
 # Exibir informações do carro
-print(f"Marca: {self.marca}")
+print(f"Marca: {carro1.marca}")
+print(f"Modelo: {carro1.modelo}")
+print(f"ano: {carro1.ano}") 
+
+carro1.acelerar(180)
+
+# "carro2" é uma variável que recebe um objeto
+carro2 = Carro( "BYD", "eletrico", "2027")
+
+# Exibir informações do carro
+print(f"Marca: {carro2.marca}")
+print(f"Modelo: {carro2.modelo}")
+print(f"ano: {carro2.ano}")
