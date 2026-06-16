@@ -1,0 +1,345 @@
+/* ==========================================================================
+   1. CONFIGURAÇÕES BASE & CORES DO SITE
+   ========================================================================== */
+:root {
+    --cor-fundo: #080b11;            /* Azul ultra escuro de fundo */
+    --cor-card: #111622;             /* Cor dos blocos e cartões */
+    --cor-texto-principal: #f1f5f9;  /* Cor clara para leitura dos textos */
+    --cor-texto-secundario: #94a3b8; /* Cor cinza para subtítulos */
+    --cor-primaria: #6366f1;         /* Roxo Elétrico para botões */
+    --cor-secundaria: #06b6d4;       /* Ciano Neon para títulos */
+    --cor-detalhe: #d946ef;          /* Rosa Choque para o seu Sonho */
+}
+
+/* Faz a página deslizar suavemente ao clicar nos links do menu */
+html {
+    scroll-behavior: smooth; 
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto-principal);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   2. BARRA DE NAVEGAÇÃO FIXA DO TOPO (NAVBAR)
+   ========================================================================== */
+.navbar {
+    position: fixed;      /* Fixa o menu no topo ao rolar a página */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(8, 11, 17, 0.9); /* Fundo semi-transparente estilo premium */
+    backdrop-filter: blur(10px);            /* Desfoca o fundo atrás da barra */
+    z-index: 1000;                          /* Garante que o menu fique na frente de tudo */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between; /* Afasta o Logo dos links */
+    align-items: center;
+}
+
+.logo {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--cor-secundaria);
+}
+
+.nav-menu {
+    list-style: none; /* Remove as bolinhas da lista */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 25px; /* Espaço entre cada palavra do menu */
+}
+
+.nav-menu a {
+    color: var(--cor-texto-secundario);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+/* Efeito ao passar o mouse por cima do menu */
+.nav-menu a:hover {
+    color: var(--cor-secundaria); 
+}
+
+/* Botão especial de Destaque no Menu (Meu Sonho) */
+.nav-menu .btn-destaque {
+    background-color: var(--cor-primaria);
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 8px;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.nav-menu .btn-destaque:hover {
+    background-color: var(--cor-detalhe);
+    transform: translateY(-2px); /* Faz o botão subir levemente */
+}
+
+/* ==========================================================================
+   3. BANNER DE ENTRADA (HERO SECTION)
+   ========================================================================== */
+.hero-section {
+    background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent), 
+                radial-gradient(circle at bottom left, rgba(6, 182, 212, 0.1), transparent);
+    height: 55vh; /* Define a altura do banner inicial */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+    margin-top: 60px; /* Evita que o menu fixe tampe o título */
+}
+
+.hero-conteudo h1 {
+    font-size: 3rem;
+    margin: 0 0 15px 0;
+    font-weight: 800;
+}
+
+/* Aplica efeito degradê moderno no seu nome */
+.nome-colorido {
+    background: linear-gradient(90deg, var(--cor-secundaria), var(--cor-detalhe));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+}
+
+.hero-conteudo p {
+    font-size: 1.3rem;
+    color: var(--cor-texto-secundario);
+    margin-bottom: 30px;
+}
+
+.hero-btn {
+    background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(6, 182, 212, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.hero-btn:hover {
+    transform: scale(1.05); /* Aumenta o botão levemente */
+}
+
+/* ==========================================================================
+   4. SEÇÕES DO SITE & AREA "SOBRE MIM" LADO A LADO
+   ========================================================================== */
+.site-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.secao-site {
+    padding: 60px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Linha divisória fina */
+}
+
+.tag-secao {
+    font-size: 0.8rem;
+    color: var(--cor-secundaria);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.secao-site h2 {
+    font-size: 2.2rem;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+/* Junta a foto e o texto na mesma linha (Efeito de Site Verdadeiro) */
+.grid-sobre {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap; /* Se abrir no celular, joga a foto para cima e o texto para baixo */
+}
+
+.bloco-imagem {
+    flex: 1;
+    min-width: 250px;
+    display: flex;
+    justify-content: center;
+}
+
+.foto-perfil {
+    width: 200px;
+    height: 200px;
+    border-radius: 30px; /* Cantos arredondados modernos */
+    object-fit: cover;
+    border: 4px solid var(--cor-card);
+    box-shadow: 0 0 0 4px var(--cor-primaria), 0 15px 30px rgba(0,0,0,0.5); /* Borda dupla iluminada */
+}
+
+.bloco-texto {
+    flex: 2;
+    min-width: 300px;
+}
+
+.bloco-texto p {
+    font-size: 1.1rem;
+    color: var(--cor-texto-secundario);
+    margin-bottom: 15px;
+}
+
+/* ==========================================================================
+   5. MEUS HOBBIES EM EM CARDS (CARTÕES INTERATIVOS)
+   ========================================================================== */
+.topo-secao {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.descricao-secao {
+    color: var(--cor-texto-secundario);
+    font-size: 1.1rem;
+}
+
+.cards-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card-hobby {
+    flex: 1;
+    min-width: 220px;
+    background-color: var(--cor-card);
+    padding: 35px 25px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efeito de flutuar e acender quando passa o mouse no card de hobby */
+.card-hobby:hover {
+    transform: translateY(-10px); 
+    box-shadow: 0 15px 30px rgba(99, 102, 241, 0.15);
+    border-color: rgba(99, 102, 241, 0.3);
+}
+
+.icone-card {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.card-hobby h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.3rem;
+}
+
+/* ==========================================================================
+   6. SEÇÃO DESTINOS
+   ========================================================================== */
+.grid-destinos {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.texto-destinos {
+    flex: 1;
+    min-width: 300px;
+}
+
+.cards-paises {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.item-pais {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: var(--cor-card);
+    padding: 15px 25px;
+    border-radius: 12px;
+    border-left: 4px solid var(--cor-secundaria); /* Barrinha azul na lateral do card */
+}
+
+.bandeira {
+    font-size: 2rem;
+}
+
+.item-pais h4 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+/* ==========================================================================
+   7. PAINEL DE DESTAQUE (MEU MAIOR SONHO)
+   ========================================================================== */
+.secao-site-destaque {
+    margin: 60px 0;
+    background: linear-gradient(135deg, #1e1b4b, #311042); /* Mistura de cores exclusiva para o sonho */
+    padding: 60px 40px;
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    border: 1px solid rgba(217, 70, 239, 0.1);
+}
+
+.tag-secao-clara {
+    font-size: 0.8rem;
+    color: var(--cor-detalhe);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.conteudo-sonho h2 {
+    font-size: 2.2rem;
+    margin: 10px 0 20px 0;
+}
+
+.conteudo-sonho p {
+    font-size: 1.25rem;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #e2e8f0;
+    font-style: italic; /* Texto em itálico para dar tom de citação */
+}
+
+/* ==========================================================================
+   8. RODAPÉ DO SITE (FOOTER)
+   ========================================================================== */
+.rodape-site {
+    background-color: #04060a;
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--cor-texto-secundario);
+    border-top: 1px solid rgba(255, 255, 255, 0.02);
+}
